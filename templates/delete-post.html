@@ -1,0 +1,60 @@
+{% extends 'basic.html'%}
+{% load static %}
+{%load crispy_forms_tags%}
+{%block header%}
+<title>Delete Post - {{object.title}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="Delete Post">
+<meta name="author" content="Deepak">
+
+<link rel="canonical" href="https://hiigeek.com/delete-post/" />
+
+<!--  Social tags -->
+<meta name="keywords" content="Post Delete,Delete Post,PostDelete,Delete hiigeek post,post delete hiigeek,hii geek post delete,delete,post delete">
+<meta name="description" content="Go to the post on your Page's timeline. Click in the delete button. Select Delete Post then click Delete higeek post.">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="hii Geek delete post">
+<meta itemprop="description" content="Go to the post on your Page's timeline. Click in the delete button. Select Delete Post then click Delete higeek post.">
+<meta itemprop="image" content="https://">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="Search">
+<meta name="twitter:site" content="@hiigeek">
+<meta name="twitter:title" content="hii geek delete post">
+<meta name="twitter:description" content="Go to the post on your Page's timeline. Click in the delete button. Select Delete Post then click Delete higeek post.">
+<meta name="twitter:creator" content="@deepakaryak9">
+<meta name="twitter:image" content="https://">
+
+<!-- Open Graph data -->
+<meta property="fb:app_id" content="214738555737136">
+<meta property="og:title" content="hii geek delete post" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hiigeek.com/delete-post/" />
+<meta property="og:image" content="https://"/>
+<meta property="og:description" content="Go to the post on your Page's timeline. Click in the delete button. Select Delete Post then click Delete higeek post."/>
+<meta property="og:site_name" content="hii geek" />
+
+{%endblock header%}
+
+
+
+{% block content%}
+<div style="margin-top:200px;" class="container">
+<div class="row justify-content-center">
+<div class="col-16 col-md-10 col-lg-10 mb-8 mb-md-5">
+    <form method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Delete Post</legend>
+            <h2>Are Your Really Want to Delete This Post -  {{object.title}}</h2>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Yes, Delete</button>
+            <a class="btn btn-danger" href="/home/">Cancel</a>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+{%endblock content%}

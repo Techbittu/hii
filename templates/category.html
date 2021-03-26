@@ -1,0 +1,99 @@
+{% extends 'basic.html'%}
+{% load static %}
+{%block header%}
+<title>Category - {{cate}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="Category - {{cate}}">
+<meta name="author" content="Deepak">
+
+<link rel="canonical" href="https://hiigeek.com/category/{{cate}}" />
+
+<!--  Social tags -->
+<meta name="keywords" content="{{cate}} page,ask {{cate}},{{cate}} post,search {{cate}},{{cate}},post of {{cate}}">
+<meta name="description" content="Get all post realted {{cate}} category with details and expert solution of every question..">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="hii Geek Category">
+<meta itemprop="description" content="Get all post realted {{cate}} category with details and expert solution of every question..">
+<meta itemprop="image" content="https://">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="Search">
+<meta name="twitter:site" content="@hiigeek">
+<meta name="twitter:title" content="hii geek Category">
+<meta name="twitter:description" content="Get all post realted {{cate}} category with details and expert solution of every question..">
+<meta name="twitter:creator" content="@deepakaryak9">
+<meta name="twitter:image" content="https://">
+
+<!-- Open Graph data -->
+<meta property="fb:app_id" content="214738555737136">
+<meta property="og:title" content="hii geek Category" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hiigeek.com/category/{{cate}}" />
+<meta property="og:image" content="https://"/>
+<meta property="og:description" content="Get all post realted {{cate}} category with details and expert solution of every question.." />
+<meta property="og:site_name" content="hii geek" />
+
+{%endblock header%}
+{%block js%}
+<script>
+let priviews = document.getElementsByClassName('priview');
+Array.from(priviews).forEach((element)=>{
+    element.innerHTML= element.innerText;
+})
+</script>
+{% endblock js%}
+{% block content%}
+<div class="container" style="margin-top: 100px;">
+       <div class="row justify-content-center text-center pt-5">
+       <p>CATEGORY - {{cate}}</p>
+       <div class="container">
+
+           {% for i in category %}
+                <a href="/category/{{i.name}}" class="text-danger mr-3">{{i.name}}</a>
+                {%endfor%}
+               
+                </div>
+                </div>
+</div>
+
+     <div class="row justify-content-center">
+            <div class="mb-4 mt-5 col-11 col-md-7">
+                
+                <div class="alert alert-secondary shadow-inset" role="alert">
+                     {%if pos|length < 1 %}
+        <div style="margin-left: 40%;margin-top:-50px; margin-bottom:70px;" class="column pt-6">
+        <p>No Category Post Found</p>
+        This Category:  <b>  {{cate}}</b>- don't have any documents. <br>
+        Suggestions: -
+        <ul>
+               <li>  Add Post in this category.</li>
+               <li>  Try different keywords.</li>
+               <li>  Try more general keywords.</li>
+               <li>  Ask Questions</li>
+        </ul>
+    
+        </div>
+        {%else%}
+                    {% for post in pos%}
+                    
+                   <a style="color:blue" href="../{{post.slug}}" ><span class="alert-heading">{{post.title}}</span></a>
+                   <div style="float:right" class="d-flex align-items-center">
+                                <span class="small"><span class="far fa-calendar-alt mr-2"></span>{{post.timeStamp}}</span>
+                            </div>
+                   <p style="color:gray" ><b>www.hiigeek.com/</b>{{post.slug}}</p>
+                    
+                    <div style="color:black;" class="priview">{{post.content |safe| truncatechars:220}}</div>
+                   <div style="float:right" class="post-group">
+                                    <span class="badge badge-danger text-uppercase"><a style="color:saddlebrown;" href="/category/{{post.category}}" >{{post.category}}</a></span>
+                            </div>
+                    <hr style="margin-top:50px;border-color:thistle">
+                    
+                  {%endfor%}
+                  {%endif%}
+                </div>
+        
+            </div>
+        </div>
+    
+{% endblock %}

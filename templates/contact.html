@@ -1,0 +1,156 @@
+{% extends 'basic.html'%}
+{% load static %}
+{%block header%}
+<title>hiigeek Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="hiigeek Contact">
+<meta name="author" content="Deepak">
+
+<link rel="canonical" href="https://hiigeek.com/Contact/" />
+
+<!--  Social tags -->
+<meta name="keywords" content="ContactUs,Contact Page,Contact hiigeek,hiigeek Contact,hii geek Contact,contact,hii geek,hiigeek contact page,contact hii geek,">
+<meta name="description" content="Quickly send messages to groups of people you contact the most, without entering their addresses individually. With hiigeek Contacts.">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="hii Geek contact">
+<meta itemprop="description" content="Quickly send messages to groups of people you contact the most, without entering their addresses individually. With hiigeek Contacts.">
+<meta itemprop="image" content="https://">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="Search">
+<meta name="twitter:site" content="@hiigeek">
+<meta name="twitter:title" content="hii geek contact">
+<meta name="twitter:description" content="Quickly send messages to groups of people you contact the most, without entering their addresses individually. With hiigeek Contacts.">
+<meta name="twitter:creator" content="@deepakaryak9">
+<meta name="twitter:image" content="https://">
+
+<!-- Open Graph data -->
+<meta property="fb:app_id" content="214738555737136">
+<meta property="og:title" content="hii geek contact" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hiigeek.com/Contact/" />
+<meta property="og:image" content="https://"/>
+<meta property="og:description" content="Quickly send messages to groups of people you contact the most, without entering their addresses individually. With hiigeek Contacts." />
+<meta property="og:site_name" content="hii geek" />
+
+{%endblock header%}
+
+{% block content%}
+
+        <section style="margin-top:100px;" class="section section-lg">
+            
+            <div class="container">
+                {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible shadow-soft fade show" role="alert">
+                    <span class="alert-inner--icon"><span class="fas fa-fire"></span></span>
+                    <span class="alert-inner--text"><strong>Message</strong>{{message}}</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor%}
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12 col-lg-12 mb-5">
+                        <!-- Contact Card -->
+                        <div class="card bg-primary shadow-soft border-light p-2 p-md-3 p-lg-5">
+                            <div class="card-header">
+                                <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        <div class="shadow-inset p-4 mb-5 rounded">
+                                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13839.072144286654!2d77.8905574397102!3d29.870962861130792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390eb36e08b35119%3A0x798f5dc25ebd0a72!2sRoorkee%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1615553958703!5m2!1sen!2sin"></iframe>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-8 text-center mb-5">
+                                        <h1 class="display-2 mb-3">Get in touch today</h1>
+                                        <p class="lead">Have a new project in mind? Need help with an ongoing one? Drop us a line about your project needs, we answer same day.</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-5">
+                                    <div class="col-md-4 col-lg-4 text-center">
+                                        <!-- Visit Box -->
+                                        <div class="icon-box mb-4">
+                                            <div class="icon icon-shape shadow-soft border-light rounded-circle mb-4">
+                                                <span class="fas fa-map-marker-alt"></span>
+                                            </div>
+                                            <h2 class="h5 icon-box-title">Visit us</h2>
+                                            <span>
+                                                Roorkee
+                                                <br>
+                                                IN, Uttrakhand
+                                            </span>
+                                        </div>
+                                        <!-- End of Visit Box -->
+                                    </div>
+                                    <div class="col-md-4 col-lg-4 text-center">
+                                        <!-- Call Box -->
+                                        <div class="icon-box mb-4">
+                                            <div class="icon icon-shape shadow-soft border-light rounded-circle mb-4">
+                                                <span class="fas fa-headphones-alt"></span>
+                                            </div>
+                                            <h2 class="h5 icon-box-title">Call</h2>
+                                            <span>+91 7667446309</span>
+                                            <div class="text-small text-gray">
+                                                Mon - Fri, 8am - 4pm
+                                            </div>
+                                        </div>
+                                        <!-- End of Call Box -->
+                                    </div>
+                                    <div class="col-md-4 col-lg-4 text-center">
+                                        <!-- Email Box -->
+                                        <div class="icon-box mb-4">
+                                            <div class="icon icon-shape shadow-soft border-light rounded-circle mb-4">
+                                                <span class="far fa-paper-plane"></span>
+                                            </div>
+                                            <h2 class="h5 icon-box-title">Email</h2>
+                                            <a href="#">admin@hiigeek.com</a>
+                                            <br><a href="#">deepakaryak9@gmail.com</a>
+                                        </div>
+                                        <!-- End of Email Box -->
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="/Contact/" method="POST" class="col-12 col-md-8 mx-auto">
+                                {%csrf_token %}
+                                
+                                <!-- Form -->
+                                <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><span class="far fa-user-circle"></span></span>
+                                        </div>
+                                        <input class="form-control" name="name"  id="name" placeholder="e.g. Deepak Arya" type="text" aria-label="contact name input">
+                                    </div>
+                                </div>
+                                <!-- Form -->
+                                <div class="form-group">
+                                    <label for="email">Your Email</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><span class="far fa-envelope"></span></span>
+                                        </div>
+                                        <input class="form-control" name="email" id="email" placeholder="example@company.com" type="email" aria-label="contact email input">
+                                    </div>
+                                </div>
+                                <!-- Form -->
+                                <div class="form-group">
+                                    <label for="content">Message</label>
+                                    <textarea class="form-control" name="content" placeholder="Enter your message..." id="content" rows="4"></textarea>
+                                </div>
+                                <!-- End of Form -->
+                                <div class="card-footer px-0 mx-auto">
+                                <button type="submit" class="btn btn-primary">Send message</button>
+                            </div>
+
+                            </form>
+                            
+                        </div>
+                        <!-- End of Contact Card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endblock %}
+    

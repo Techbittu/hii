@@ -1,0 +1,109 @@
+{% extends 'basic.html'%}
+{% load static %}
+{%block header%}
+<title>Sign In - hiigeek Account</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="Sign In - hiigeek Account">
+<meta name="author" content="Deepak">
+
+<link rel="canonical" href="https://hiigeek.com/signin/" />
+
+<!--  Social tags -->
+<meta name="keywords" content="Sign in,Sign in hiigeek,signin hii,shin in account,sign in hiigeek account,hiigeek user,hiigeek user account">
+<meta name="description" content="Sign in. Use your hiigeek Account. Email or username. Forgot username? Type the text you hear or see. Not your computer? Use Guest mode to sign in privately.">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Sign In - hiigeek Account">
+<meta itemprop="description" content="Sign in. Use your hiigeek Account. Email or username. Forgot username? Type the text you hear or see. Not your computer? Use Guest mode to sign in privately.">
+<meta itemprop="image" content="https://">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="Search">
+<meta name="twitter:site" content="@hiigeek">
+<meta name="twitter:title" content="Sign In - hiigeek Account">
+<meta name="twitter:description" content="Sign in. Use your hiigeek Account. Email or username. Forgot username? Type the text you hear or see. Not your computer? Use Guest mode to sign in privately.">
+<meta name="twitter:creator" content="@deepakaryak9">
+<meta name="twitter:image" content="https://">
+
+<!-- Open Graph data -->
+<meta property="fb:app_id" content="214738555737136">
+<meta property="og:title" content="Sign In - hiigeek Account" />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="https://hiigeek.com/signin/" />
+<meta property="og:image" content="https://"/>
+<meta property="og:description" content="Sign in. Use your hiigeek Account. Email or username. Forgot username? Type the text you hear or see. Not your computer? Use Guest mode to sign in privately." />
+<meta property="og:site_name" content="hii geek" />
+
+{%endblock header%}
+
+
+{% block content%}
+        <section class="min-vh-100 d-flex bg-primary align-items-center">
+            <div class="container">
+                  {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible shadow-soft fade show" role="alert">
+                    <span class="alert-inner--icon"><span class="fas fa-fire"></span></span>
+                    <span class="alert-inner--text"><strong>Message</strong>{{message}}</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor%}
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+                        <div class="card bg-primary shadow-soft border-light p-4">
+                            <div class="card-header text-center pb-0">
+                                <h2 class="h4">Sign in to our platform</h2>  
+                            </div>
+                            <div class="card-body">
+                                <form action="/signin/" method="post" class="mt-4">
+                                    {%csrf_token%}
+                                    <!-- Form -->
+                                    <div class="form-group">
+                                        <label for="userlogin">Username</label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><span class="fas fa-envelope"></span></span>
+                                            </div>
+                                            <input class="form-control" id="userlogin" name="userlogin" placeholder="username" type="text" aria-label="Username">
+                                        </div>
+                                    </div>
+                                    <!-- End of Form -->
+                                    <div class="form-group">
+                                        <!-- Form -->
+                                        <div class="form-group">
+                                            <label for="loginpsw">Password</label>
+                                            <div class="input-group mb-4">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><span class="fas fa-unlock-alt"></span></span>
+                                                </div>
+                                                <input class="form-control" id="loginpsw" name="loginpsw" placeholder="Password" type="password" aria-label="Password" required>
+                                            </div>
+                                        </div>
+                                        <!-- End of Form -->
+                                        <div class="d-block d-sm-flex justify-content-between align-items-center mb-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck5" checked>
+                                                <label class="form-check-label" for="defaultCheck5">
+                                                  Remember me
+                                                </label>
+                                            </div>
+                                            <div><a href="/password-reset/" class="small text-right">Lost password?</a></div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-block btn-primary">Sign in</button>
+                                </form>
+                              
+                                <div class="d-block d-sm-flex justify-content-center align-items-center mt-4">
+                                    <span class="font-weight-normal">
+                                        Not registered?
+                                        <a href="/signup/" class="font-weight-bold">Create account</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}

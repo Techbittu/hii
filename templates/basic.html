@@ -1,0 +1,215 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Primary Meta Tags -->
+{%block header%}
+{%endblock header%}
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="120x120" href="{%static './assets/img/favicon/apple-touch-icon.png' %}">
+<link rel="icon" type="image/png" sizes="32x32" href="{%static './assets/img/favicon/favicon-32x32.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{%static './assets/img/favicon/favicon-16x16.png' %}">
+<link rel="manifest" href="{%static './assets/img/favicon/site.webmanifest' %}">
+<link rel="mask-icon" href="{%static './assets/img/favicon/safari-pinned-tab.svg'%}" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Fontawesome -->
+<link type="text/css" href="{%static './vendor/@fortawesome/fontawesome-free/css/all.min.css'%}" rel="stylesheet">
+
+<!-- Pixel CSS -->
+<link type="text/css" href="{%static './css/neumorphism.css'%}" rel="stylesheet">
+
+<!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+{% block style %}
+{%endblock style%}
+</head>
+
+<body>
+   <header class="header-global">
+    <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-light navbar-transparent navbar-theme-primary">
+        <div class="container position-relative">
+            <a class="navbar-brand shadow-soft py-2 px-3 rounded border border-light mr-lg-4" href="/">
+                <img class="navbar-brand-dark" src="{%static './assets/img/brand/dark.png'%}" alt="Logo light">
+                <img class="navbar-brand-light" src="{%static './assets/img/brand/dark.png'%}" alt="Logo dark">
+            </a>
+            <div class="navbar-collapse collapse" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="/" class="navbar-brand shadow-soft py-2 px-3 rounded border border-light">
+                                <img src="{%static './assets/img/brand/dark.png'%}" alt="hii logo">
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <a href="#navbar_global" class="fas fa-times" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" title="close" aria-label="Toggle navigation"></a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                    <li class="nav-item">
+                    <a href="/home/">
+                        <button class="btn btn-icon-only btn-github" type="button" aria-label="Home Page" title="Home Page">
+                            <span aria-hidden="true" class="fas fa-home"></span>
+                        </button>
+                        </a>
+                    </li>
+                
+                   
+                    <li class="nav-item dropdown">
+                         <a href="#" class="nav-link" data-toggle="dropdown" >
+                            <span class="nav-link-inner-text">Settings</span>
+                            <span class="fas fa-angle-down nav-link-arrow ml-2"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/about/">About</a></li>
+                            <li><a class="dropdown-item" href="/Contact/">Contact</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a class="dropdown-item" href="/profile/{{user.username}}">Profile</a></li>
+                            <li><a class="dropdown-item" href="/logout/">Logout</a></li>
+                            {%else%}
+                            <li><a class="dropdown-item" href="/signin/">Sign in</a></li>
+                            <li><a class="dropdown-item" href="/signup/">Sign up</a></li>
+                            {%endif%}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center">
+                {% if user.is_authenticated %}
+            <a  href="{%url 'questions' %}" class="btn btn-primary text-danger mr-3"><i  style="color: brown" class="fas fa-question"></i> Ask Questions</a>
+                <a href="/profile/{{user.username}}" class="btn btn-primary  d-md-inline-block"><i class="fas fa-user-circle"></i></a>
+                {%else%}
+             <a  href="/signin/" class="btn btn-primary text-danger mr-3"><i  style="color: brown" class="fas fa-question"></i> Ask Questions</a>
+                <a href="/signin/" class="btn btn-primary  d-md-inline-block"><i class="fas fa-user-circle"></i></a>
+                {%endif%}
+                <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+    <main>
+        
+        
+     {% block content%}
+     {% endblock content %}
+    </main>
+    <footer class="d-flex pb-5 pt-6 pt-md-7 border-top border-light bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <p><strong>hii</strong> we are glad that you are here with us at a place where you can get whatever you want to ask.</p>
+                <ul class="d-flex list-unstyled mb-5 mb-lg-0">
+                    <li class="mr-2">
+                        <a href="https://twitter.com/deepakaryak9" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="twitter social link"
+                        data-toggle="tooltip" data-placement="top" title="Follow on Twitter">
+                            <span aria-hidden="true" class="fab fa-twitter"></span>
+                        </a>
+                    </li>
+                    <li class="mr-2">
+                        <a href="https://www.facebook.com/deepakaryak9/" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="facebook social link"
+                        data-toggle="tooltip" data-placement="top" title="Like on Facebook">
+                            <span aria-hidden="true" class="fab fa-facebook"></span>
+                        </a>
+                    </li>
+                    <li class="mr-2">
+                        <a href="https://github.com/techbittu" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="github social link"
+                        data-toggle="tooltip" data-placement="top" title="Open source projects">
+                            <span aria-hidden="true" class="fab fa-github"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com/Deepak_life" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="instagram social link"
+                        data-toggle="tooltip" data-placement="top" title="Follow us on instagram">
+                            <span aria-hidden="true" class="fab fa-instagram"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2 mb-5 mb-lg-0">
+                <h5>hii</h5>
+                <ul class="footer-links list-unstyled mt-2">
+                    <li class="mb-1"><a class="p-2" href="/about/">About Us</a></li>
+                    <li><a class="p-2" href="/Contact/">Contact Us</a></li>
+                    <li class="mb-1"><a class="p-2" href="/home/">Post</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2 mb-5 mb-lg-0">
+                <h5>Other</h5>
+                <ul class="footer-links list-unstyled mt-2">
+                    <li class="mb-1"><a class="p-2" href="/documentations/" target="_blank">Docs
+                        <span class="badge badge-gray text-uppercase ml-2">v1.0</span></a>
+                    </li>
+                    <li class="mb-1">
+                        <a class="p-2"  href="/license/">License</a>
+                    </li>
+                    <li>
+                        <a class="p-2" href="/Contact/">Support</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-4 mb-5 mb-lg-0">
+                <h5>Subscribe</h5>
+                <p class="text-gray font-small mt-2">Join our mailing list. We write rarely, but only the best site you have ever seen.</p>
+                <form action="#">
+                    <div class="form-row mb-2">
+                        <div class="col-12">
+                            <label class="h6 font-weight-normal d-none" for="exampleInputEmail3">Email address</label>
+                            <input type="email" class="form-control mb-2" placeholder="example@company.com" name="email" aria-label="Subscribe form" id="exampleInputEmail3" required>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block" data-loading-text="Sending">
+                                <span>Subscribe</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <p class="text-gray font-small m-0">We’ll never share your details. See our <a class="text-black" href="/privacy/">Privacy Policy</a></p>
+            </div>
+        </div>
+        <hr class="my-5">
+        <div class="row">
+            <div class="col">
+                <a href="https://hiigeek.com" target="_blank" class="d-flex justify-content-center">
+                    <img src="{%static './assets/img/logo.png'%}" height="25" class="mb-3" alt="hii Logo">
+                </a>
+            <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+                <p class="font-weight-normal font-small mb-0">Copyright © hii
+                    <span class="current-year">2021</span>. Proudly made by Deepak.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% block js%}
+{% endblock js%}
+    <!-- Core -->
+<script src="{%static './vendor/jquery/dist/jquery.min.js'%}"></script>
+<script src="{%static './vendor/popper.js/dist/umd/popper.min.js'%}"></script>
+<script src="{%static './vendor/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+<script src="{%static './vendor/headroom.js/dist/headroom.min.js'%}"></script>
+
+<!-- Vendor JS -->
+<script src="{%static './vendor/onscreen/dist/on-screen.umd.min.js'%}"></script>
+<script src="{%static './vendor/nouislider/distribute/nouislider.min.js'%}"></script>
+<script src="{%static './vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'%}"></script>
+<script src="{%static './vendor/waypoints/lib/jquery.waypoints.min.js'%}"></script>
+<script src="{%static './vendor/jarallax/dist/jarallax.min.js'%}"></script>
+<script src="{%static './vendor/jquery.counterup/jquery.counterup.min.js'%}"></script>
+<script src="{%static './vendor/jquery-countdown/dist/jquery.countdown.min.js'%}"></script>
+<script src="{%static './vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js'%}"></script>
+<script src="{%static './vendor/prismjs/prism.js'%}"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- Neumorphism JS -->
+<script src="{%static './assets/js/neumorphism.js'%}"></script>
+</body>
+
+</html>

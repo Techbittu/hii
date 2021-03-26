@@ -1,0 +1,116 @@
+{% extends 'basic.html'%}
+{% load static %}
+{%block header%}
+<title>{{profile.first_name}} {{profile.last_name}} - (@{{profile.username}})</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="{{profile.first_name}} {{profile.last_name}} - (@{{profile.username}})">
+<meta name="author" content="Deepak">
+
+<link rel="canonical" href="https://hiigeek.com/profile/{{profile.username}}" />
+
+<!--  Social tags -->
+<meta name="keywords" content="Profile page,hiigeek profile,user,profile,user,{{profile.first_name}} hiigeek, {{profile.last_name}} hiigeek,@{{profile.username}} hiigeek">
+<meta name="description" content="hiigeek user profile page of {{profile.first_name}} {{profile.last_name}} username -  @{{profile.username}} and bio is {{profile.bio}}-">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="{{profile.first_name}} {{profile.last_name}} - (@{{profile.username}})">
+<meta itemprop="description" content="hiigeek user profile page of {{profile.first_name}} {{profile.last_name}} username -  @{{profile.username}} and bio is {{profile.bio}}-">
+<meta itemprop="image" content="https://">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="Search">
+<meta name="twitter:site" content="@hiigeek">
+<meta name="twitter:title" content="{{profile.first_name}} {{profile.last_name}} - (@{{profile.username}})">
+<meta name="twitter:description" content="hiigeek user profile page of {{profile.first_name}} {{profile.last_name}} username -  @{{profile.username}} and bio is {{profile.bio}}-">
+<meta name="twitter:creator" content="@deepakaryak9">
+<meta name="twitter:image" content="https://">
+
+<!-- Open Graph data -->
+<meta property="fb:app_id" content="214738555737136">
+<meta property="og:title" content="{{profile.first_name}} {{profile.last_name}} - (@{{profile.username}})" />
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://hiigeek.com/profile/{{profile.username}}" />
+<meta property="og:image" content="https://"/>
+<meta property="og:description" content="hiigeek user profile page of {{profile.first_name}} {{profile.last_name}} username -  @{{profile.username}} and bio is {{profile.bio}}-" />
+<meta property="og:site_name" content="hii geek" />
+
+{%endblock header%}
+{% load crispy_forms_tags %}
+
+{% block content%}
+<div style="margin-top:200px;" class="container">
+     
+<div class="row justify-content-center">
+   
+<div class="col-16 col-md-10 col-lg-10 mb-8 mb-md-5">
+    <div style="padding-bottom:100px;">
+    {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible shadow-soft fade show" role="alert">
+                    <span class="alert-inner--icon"><span class="fas fa-fire"></span></span>
+                    <span class="alert-inner--text"><strong>Message</strong>{{message}}</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor%}
+                </div>
+                <!-- Profile Card -->
+                <div class="profile-card mb-5">
+                    <div class="card bg-primary shadow-inset border-light text-center">
+                        <div class="card-header">
+                            <div class="profile-image bg-primary shadow-inset border border-light rounded mx-auto p-3 mt-n6">
+                                <img src="{{profile.profile.profile_image.url}}" class="card-img-top rounded" alt="Leos Portrait">
+                            </div>
+                        </div>
+                        <div class="card-body pb-5">
+                            <h3 class="h5 mb-2">{{profile.first_name}}  {{profile.last_name}}</h3>
+                            <span class="h6 font-weight-normal text-gray mb-3">@{{profile.username}}</span>
+                        <div>
+                             <span class="h6 font-weight-normal text-gray mb-3">Email: {{profile.email}}</span>
+                        </div>
+                        <div>
+                             <span class="h6 font-weight-normal text-gray mb-3">Bio: {{profile.profile.bio}}</span>
+                        </div>
+                           
+                           
+                        <div style="padding-top: 10px;">
+                            {% if user.is_authenticated and user.username == username %}
+                           <a class="btn btn-sm btn-primary" href="/logout/">
+                                Logout
+                            </a>
+                            
+                             {% else %}
+                            
+                             <a class="btn btn-sm btn-primary mr-3" href="#">
+                                <span class="fas fa-user-plus mr-1"></span> Follow
+                            </a>
+                            {%endif%}
+
+                                                        
+                        </div>
+                        {% if user.is_authenticated and user.username == username %}
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                <legend style="padding-top:50px;" class="border-bottom mb-4">Profile Update</legend>
+                                {{context.u_form|crispy}}
+                                {{context.p_form|crispy}}
+                                </fieldset>
+                                <div class='form-group'>
+                                    <button class="btn btn-outline-info" type="submit">Update</button>
+                                </div>
+                        </form>
+                        {%endif%}
+                        
+                        
+                        
+
+                         
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Profile Card -->
+            </div>
+</div>
+</div>
+{% endblock %}

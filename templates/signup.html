@@ -1,0 +1,151 @@
+{% extends 'basic.html'%}
+{% load static %}
+{%block header%}
+<title>Sign Up - hiigeek Account</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="Sign Up - hiigeek Account">
+<meta name="author" content="Deepak">
+
+<link rel="canonical" href="https://hiigeek.com/signup/" />
+
+<!--  Social tags -->
+<meta name="keywords" content="Sign up,Sign up hiigeek,signup hii,create account,create hiigeek account,hiigeek user,hiigeek create user account">
+<meta name="description" content="Join hiigeek! Sign up to create post, videos, stories & messages from your friends, ask questions interests around the world.">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Sign Up - hiigeek Account">
+<meta itemprop="description" content="Join hiigeek! Sign up to create post, videos, stories & messages from your friends, ask questions interests around the world.">
+<meta itemprop="image" content="https://">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="Search">
+<meta name="twitter:site" content="@hiigeek">
+<meta name="twitter:title" content="Sign Up - hiigeek Account">
+<meta name="twitter:description" content="Join hiigeek! Sign up to create post, videos, stories & messages from your friends, ask questions interests around the world.">
+<meta name="twitter:creator" content="@deepakaryak9">
+<meta name="twitter:image" content="https://">
+
+<!-- Open Graph data -->
+<meta property="fb:app_id" content="214738555737136">
+<meta property="og:title" content="Sign Up - hiigeek Account" />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="https://hiigeek.com/signup/" />
+<meta property="og:image" content="https://"/>
+<meta property="og:description" content="Join hiigeek! Sign up to create post, videos, stories & messages from your friends, ask questions interests around the world." />
+<meta property="og:site_name" content="hii geek" />
+
+{%endblock header%}
+
+
+{% block content%}
+        <section style="margin-top:200px;margin-bottom:200px;" class="min-vh-100 d-flex bg-primary align-items-center">
+           
+            <div class="container">
+                     {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible shadow-soft fade show" role="alert">
+                    <span class="alert-inner--icon"><span class="fas fa-fire"></span></span>
+                    <span class="alert-inner--text"><strong>Message</strong>{{message}}</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor%}
+                <div class="row justify-content-center">
+                
+                    <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+                        {% if user.is_authenticated %}
+                        <h2>You Are already logged in User</h2>
+                        {%else%}
+                        <div class="card bg-primary shadow-soft border-light p-4">
+                            <div class="card-header text-center pb-0">
+                                <h2 class="mb-0 h5">Create Account</h2>                               
+                            </div>
+                            <div class="card-body">
+                                <form action="/signup/" method="POST">
+                                    {% csrf_token%}
+                                     <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><span class="fas fa-user-secret"></span></span>
+                                            </div>
+                                            <input class="form-control" id="username" name="username" placeholder="Create unique username" type="text" aria-label="Username">
+                                        </div>
+                                    </div>
+                                     <div class="form-group">
+                                        <label for="fname">First Name</label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><span class="far fa-id-card"></span></span>
+                                            </div>
+                                            <input class="form-control" id="fname" name="fname" placeholder="First Name" type="text" aria-label="First Name">
+                                        </div>
+                                    </div>
+                                     <div class="form-group">
+                                        <label for="lname">Last Name</label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><span class="far fa-id-card"></span></span>
+                                            </div>
+                                            <input class="form-control" id="lname" name="lname" placeholder="Last Name" type="text" aria-label="Last Name">
+                                        </div>
+                                    </div>
+                                    <!-- Form -->
+                                    <div class="form-group">
+                                        <label for="email">Your email</label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><span class="fas fa-envelope"></span></span>
+                                            </div>
+                                            <input class="form-control" id="email" name="email" placeholder="example@company.com" type="text" aria-label="email adress">
+                                        </div>
+                                    </div>
+                                    <!-- End of Form -->
+                                    <div class="form-group">
+                                        <!-- Form -->
+                                        <div class="form-group">
+                                            <label for="psw">Password</label>
+                                            <div class="input-group mb-4">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><span class="fas fa-unlock-alt"></span></span>
+                                                </div>
+                                                <input class="form-control" id="psw" name="psw" placeholder="Password" type="password" aria-label="Password" required>
+                                            </div>
+                                        </div>
+                                        <!-- End of Form -->
+                                        <!-- Form -->
+                                        <div class="form-group">
+                                            <label for="psw2">Confirm Password</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><span class="fas fa-unlock-alt"></span></span>
+                                                </div>
+                                                <input class="form-control" id="psw2" name="psw2" placeholder="Confirm password" type="password" aria-label="Password" required>
+                                            </div>
+                                        </div>
+                                        <!-- End of Form -->
+                                        <div class="form-check mb-4">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck6" checked>
+                                            <label class="form-check-label" for="defaultCheck6">
+                                                I agree to the <a href="/privacy/">terms and conditions</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
+                                </form>
+                               
+                                <div class="d-block d-sm-flex justify-content-center align-items-center mt-4">
+                                    <span class="font-weight-normal">
+                                        Already have an account?
+                                        <a href="/signin/" class="font-weight-bold">Login here</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endif%}
+                </div>
+            </div>
+        </section>
+
+        {% endblock %}

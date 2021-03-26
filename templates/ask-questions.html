@@ -1,0 +1,58 @@
+{% extends 'basic.html'%}
+{% load static %}
+{%load crispy_forms_tags%}
+{%block header%}
+<title>Ask Questions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="Ask Questions">
+<meta name="author" content="Deepak">
+
+<link rel="canonical" href="https://hiigeek.com/questions/" />
+
+<!--  Social tags -->
+<meta name="keywords" content="Ask Questions,Hii Geek Ask Questions,hii geek askquestions,hiigeek askquestions,hii geek questions,hii ask questions,ask questions.">
+<meta name="description" content="Ask any type of Questions in hiigeek page and get instant solution of every questions you asked in technical fields..">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Ask Questions">
+<meta itemprop="description" content="Ask any type of Questions in hiigeek page and get instant solution of every questions you asked in technical fields..">
+<meta itemprop="image" content="https://">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="Search">
+<meta name="twitter:site" content="@hiigeek">
+<meta name="twitter:title" content="Ask Questions">
+<meta name="twitter:description" content="Ask any type of Questions in hiigeek page and get instant solution of every questions you asked in technical fields..">
+<meta name="twitter:creator" content="@deepakaryak9">
+<meta name="twitter:image" content="https://">
+
+<!-- Open Graph data -->
+<meta property="fb:app_id" content="214738555737136">
+<meta property="og:title" content="Ask Questions" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hiigeek.com/questions/" />
+<meta property="og:image" content="https://"/>
+<meta property="og:description" content="Ask any type of Questions in hiigeek page and get instant solution of every questions you asked in technical fields.." />
+<meta property="og:site_name" content="hii geek" />
+
+{%endblock header%}
+
+
+{% block content%}
+<div style="margin-top:200px;" class="container">
+<div class="row justify-content-center">
+<div class="col-16 col-md-10 col-lg-10 mb-8 mb-md-5">
+    <form method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Ask Questions</legend>
+            {{form|crispy}}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Post</button>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+{%endblock content%}
